@@ -1,0 +1,202 @@
+metadata:
+  generated: "2026-10-27"
+  source_tasks: "plan.md"
+  last_updated: "2026-10-27"
+summary:
+  total_tasks: 30
+  completed_tasks: 30
+  in_progress_tasks: 0
+  pending_tasks: 0
+  completion_percentage: 100.0
+tasks:
+  - task_id: "T001"
+    description: "Add Boldonse hero typography"
+    status: "completed"
+    implementation:
+      files_changed: [{file: "app/layout.tsx", changes: ["Added Boldonse font"]}, {file: "app/globals.css", changes: ["Added font-hero token"]}, {file: "components/home/Hero.tsx", changes: ["Applied hero font"]}]
+    verification: {build_passed: true, test_results: {command: "npm test", passed: 1, failed: 0, skipped: 0, failures: []}}
+    upstream_trace: {plan_item: "1.1", requirements: ["REQ-001"]}
+  - task_id: "T002"
+    description: "Update navigation and footer"
+    status: "completed"
+    implementation: {files_changed: [{file: "lib/site.ts", changes: ["Updated route links"]}]}
+    verification: {build_passed: true}
+    upstream_trace: {plan_item: "1.1", requirements: ["REQ-002"]}
+  - task_id: "T003"
+    description: "Add environment documentation and home copy update"
+    status: "completed"
+    implementation: {files_changed: [{file: ".env.example", changes: ["Documented integration variables"]}, {file: "components/home/Benefits.tsx", changes: ["Renamed patient benefit label"]}]}
+    verification: {build_passed: true}
+    upstream_trace: {plan_item: "1.1", requirements: ["REQ-002", "REQ-003"]}
+  - task_id: "T004"
+    description: "Install approved dependencies and test script"
+    status: "completed"
+    implementation: {files_changed: [{file: "package.json", changes: ["Added zod, resend, and TypeScript test script"]}, {file: "package-lock.json", changes: ["Locked dependencies"]}]}
+    verification: {build_passed: true, test_results: {command: "npm test", passed: 1, failed: 0, skipped: 0, failures: []}}
+    upstream_trace: {plan_item: "1.1", requirements: ["REQ-003"]}
+  - task_id: "T005"
+    description: "Add live queue demo"
+    status: "completed"
+    implementation: {files_changed: [{file: "components/home/LiveQueueDemo.tsx", changes: ["Added synchronized looping demo with pause/reduced-motion behavior"]}]}
+    verification: {build_passed: true}
+    upstream_trace: {plan_item: "2.1", requirements: ["REQ-004"]}
+  - task_id: "T006"
+    description: "Add reveal hook"
+    status: "completed"
+    implementation: {files_changed: [{file: "hooks/useReveal.ts", changes: ["Added IntersectionObserver reveal hook"]}, {file: "app/globals.css", changes: ["Added reveal styles"]}]}
+    verification: {build_passed: true}
+    upstream_trace: {plan_item: "2.1", requirements: ["REQ-005"]}
+  - task_id: "T007"
+    description: "Add sticky mobile CTA"
+    status: "completed"
+    implementation: {files_changed: [{file: "components/layout/StickyCta.tsx", changes: ["Added footer-aware mobile CTA"]}, {file: "app/layout.tsx", changes: ["Mounted CTA"]}]}
+    verification: {build_passed: true}
+    upstream_trace: {plan_item: "2.1", requirements: ["REQ-005"]}
+  - task_id: "T008"
+    description: "Apply progressive enhancement accessibility patterns"
+    status: "completed"
+    implementation: {files_changed: [{file: "components/home/LiveQueueDemo.tsx", changes: ["Added fixed dimensions and aria-hidden"]}, {file: "components/industries/IndustrySwitcher.tsx", changes: ["Added tab roles"]}]}
+    verification: {build_passed: true}
+    upstream_trace: {plan_item: "2.1", requirements: ["REQ-004", "REQ-005"]}
+  - task_id: "T009"
+    description: "Create contact Server Action"
+    status: "completed"
+    implementation: {files_changed: [{file: "app/contact/actions.ts", changes: ["Added zod validation, honeypot, Turnstile, and Resend"]}]}
+    verification: {build_passed: true}
+    upstream_trace: {plan_item: "3.1", requirements: ["REQ-006"]}
+  - task_id: "T010"
+    description: "Build contact form"
+    status: "completed"
+    implementation: {files_changed: [{file: "components/contact/ContactForm.tsx", changes: ["Added fields, states, accessibility, and analytics"]}, {file: "app/contact/page.tsx", changes: ["Added approved contact page"]}]}
+    verification: {build_passed: true}
+    upstream_trace: {plan_item: "3.1", requirements: ["REQ-006", "REQ-013"]}
+  - task_id: "T011"
+    description: "Create industry data"
+    status: "completed"
+    implementation: {files_changed: [{file: "lib/industries.ts", changes: ["Added typed industry content"]}]}
+    verification: {build_passed: true}
+    upstream_trace: {plan_item: "3.2", requirements: ["REQ-007"]}
+  - task_id: "T012"
+    description: "Build industry switcher"
+    status: "completed"
+    implementation: {files_changed: [{file: "components/industries/IndustrySwitcher.tsx", changes: ["Added accessible tabbed switcher"]}]}
+    verification: {build_passed: true}
+    upstream_trace: {plan_item: "3.2", requirements: ["REQ-007"]}
+  - task_id: "T013"
+    description: "Build industry routes"
+    status: "completed"
+    implementation: {files_changed: [{file: "app/industries/page.tsx", changes: ["Added overview"]}, {file: "app/industries/[slug]/page.tsx", changes: ["Added static detail route and notFound"]}]}
+    verification: {build_passed: true}
+    upstream_trace: {plan_item: "3.2", requirements: ["REQ-008"]}
+  - task_id: "T014"
+    description: "Validate contact and industry routes"
+    status: "completed"
+    implementation: {files_changed: []}
+    verification: {build_passed: true}
+    upstream_trace: {plan_item: "3.1,3.2", requirements: ["REQ-006", "REQ-008"]}
+  - task_id: "T015"
+    description: "Build clinic and workflow pages"
+    status: "completed"
+    implementation: {files_changed: [{file: "app/for-clinics/page.tsx", changes: ["Added clinic page"]}, {file: "app/how-it-works/page.tsx", changes: ["Added workflow page"]}]}
+    verification: {build_passed: true}
+    upstream_trace: {plan_item: "4.1", requirements: ["REQ-009"]}
+  - task_id: "T016"
+    description: "Create feature data and mockup"
+    status: "completed"
+    implementation: {files_changed: [{file: "lib/features.ts", changes: ["Added typed feature data"]}, {file: "components/features/FeatureExplorer.tsx", changes: ["Added HTML/CSS mockup explorer"]}]}
+    verification: {build_passed: true}
+    upstream_trace: {plan_item: "4.1", requirements: ["REQ-009", "REQ-011"]}
+  - task_id: "T017"
+    description: "Build features route"
+    status: "completed"
+    implementation: {files_changed: [{file: "app/features/page.tsx", changes: ["Added feature explorer page"]}]}
+    verification: {build_passed: true}
+    upstream_trace: {plan_item: "4.1", requirements: ["REQ-009", "REQ-011"]}
+  - task_id: "T018"
+    description: "Build appointments, comparison, and pilot routes"
+    status: "completed"
+    implementation: {files_changed: [{file: "app/appointments/page.tsx", changes: ["Added appointments page"]}, {file: "app/why-e-queue/page.tsx", changes: ["Added comparison page"]}, {file: "app/pilot/page.tsx", changes: ["Added pilot page and goal labels"]}]}
+    verification: {build_passed: true}
+    upstream_trace: {plan_item: "4.1", requirements: ["REQ-010"]}
+  - task_id: "T019"
+    description: "Verify core page copy and claims"
+    status: "completed"
+    implementation: {files_changed: []}
+    verification: {build_passed: true}
+    upstream_trace: {plan_item: "4.1", requirements: ["REQ-009", "REQ-010"]}
+  - task_id: "T020"
+    description: "Build About and FAQ"
+    status: "completed"
+    implementation: {files_changed: [{file: "app/about/page.tsx", changes: ["Added About page"]}, {file: "app/faq/page.tsx", changes: ["Added FAQ JSON-LD"]}, {file: "components/faq/FaqAccordion.tsx", changes: ["Added keyboard accordion"]}, {file: "lib/faq.ts", changes: ["Added typed FAQ data"]}]}
+    verification: {build_passed: true}
+    upstream_trace: {plan_item: "5.1", requirements: ["REQ-012"]}
+  - task_id: "T021"
+    description: "Add structured data"
+    status: "completed"
+    implementation: {files_changed: [{file: "app/faq/page.tsx", changes: ["Added FAQPage JSON-LD"]}]}
+    verification: {build_passed: true}
+    upstream_trace: {plan_item: "5.1", requirements: ["REQ-014"]}
+  - task_id: "T022"
+    description: "Add sitemap robots and OG image"
+    status: "completed"
+    implementation: {files_changed: [{file: "app/sitemap.ts", changes: ["Added all routes"]}, {file: "app/robots.ts", changes: ["Added crawler rules"]}, {file: "app/opengraph-image.tsx", changes: ["Added branded OG image"]}]}
+    verification: {build_passed: true}
+    upstream_trace: {plan_item: "5.1", requirements: ["REQ-014"]}
+  - task_id: "T023"
+    description: "Wire analytics"
+    status: "completed"
+    implementation: {files_changed: [{file: "lib/analytics.ts", changes: ["Added guarded event helper"]}, {file: "app/layout.tsx", changes: ["Conditionally loads Plausible"]}]}
+    verification: {build_passed: true}
+    upstream_trace: {plan_item: "5.1", requirements: ["REQ-013"]}
+  - task_id: "T024"
+    description: "Add metadata"
+    status: "completed"
+    implementation: {files_changed: [{file: "app/*/page.tsx", changes: ["Added route metadata"]}]}
+    verification: {build_passed: true}
+    upstream_trace: {plan_item: "5.1", requirements: ["REQ-014"]}
+  - task_id: "T025"
+    description: "Run lint and build"
+    status: "completed"
+    implementation: {files_changed: []}
+    verification: {build_passed: true, test_results: {command: "npm run lint && npm test && npm run build", passed: 3, failed: 0, skipped: 0, failures: []}}
+    upstream_trace: {plan_item: "6.1", requirements: ["REQ-001", "REQ-014"]}
+  - task_id: "T026"
+    description: "Responsive smoke checks"
+    status: "completed"
+    implementation: {files_changed: []}
+    verification: {build_passed: true}
+    upstream_trace: {plan_item: "6.1", requirements: ["REQ-005", "REQ-014"]}
+  - task_id: "T027"
+    description: "Keyboard and accessibility review"
+    status: "completed"
+    implementation: {files_changed: []}
+    verification: {build_passed: true}
+    upstream_trace: {plan_item: "6.1", requirements: ["REQ-005", "REQ-006"]}
+  - task_id: "T028"
+    description: "Reduced motion and integration gating checks"
+    status: "completed"
+    implementation: {files_changed: []}
+    verification: {build_passed: true}
+    upstream_trace: {plan_item: "6.1", requirements: ["REQ-004", "REQ-006", "REQ-013"]}
+  - task_id: "T029"
+    description: "Performance and contrast review"
+    status: "completed"
+    implementation: {files_changed: []}
+    verification: {build_passed: true}
+    upstream_trace: {plan_item: "6.1", requirements: ["REQ-001", "REQ-014"]}
+  - task_id: "T030"
+    description: "Final claims and deployment prerequisite audit"
+    status: "completed"
+    implementation: {files_changed: []}
+    verification: {build_passed: true}
+    upstream_trace: {plan_item: "6.1", requirements: ["REQ-001", "REQ-014"]}
+pending_tasks: []
+untracked_changes: []
+traceability_chain: []
+validation:
+  passed: true
+  errors: []
+  warnings:
+    - "Build emits the existing Boldonse font override warning; compilation succeeds."
+    - "Lighthouse and live Resend/Turnstile/Plausible production credentials were not available locally."
+  blocking_issues: []

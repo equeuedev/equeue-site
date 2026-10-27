@@ -1,0 +1,25 @@
+version: 1
+checkpoint: plan-to-tasks
+plan: plan.md
+items:
+  - id: "1.1"
+    requirements: [REQ-001, REQ-002, REQ-003]
+    tasks: [T001, T002, T003, T004]
+  - id: "2.1"
+    requirements: [REQ-004, REQ-005]
+    tasks: [T005, T006, T007, T008]
+  - id: "3.1"
+    requirements: [REQ-006, REQ-013]
+    tasks: [T009, T010, T014]
+  - id: "3.2"
+    requirements: [REQ-007, REQ-008]
+    tasks: [T011, T012, T013, T014]
+  - id: "4.1"
+    requirements: [REQ-009, REQ-010, REQ-011]
+    tasks: [T015, T016, T017, T018, T019]
+  - id: "5.1"
+    requirements: [REQ-012, REQ-013, REQ-014]
+    tasks: [T020, T021, T022, T023, T024]
+  - id: "6.1"
+    requirements: [REQ-001, REQ-002, REQ-003, REQ-004, REQ-005, REQ-006, REQ-007, REQ-008, REQ-009, REQ-010, REQ-011, REQ-012, REQ-013, REQ-014]
+    tasks: [T025, T026, T027, T028, T029, T030]
