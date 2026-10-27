@@ -32,7 +32,11 @@ export function JourneyDemo() {
 
   return (
     <div className="mt-10 overflow-hidden rounded-3xl border border-soft-grey bg-white shadow-lg">
-      <div role="tablist" aria-label="How E-Queue works" className="grid border-b border-soft-grey sm:grid-cols-3">
+      <div
+        role="tablist"
+        aria-label="How E-Queue works"
+        className="grid border-b border-soft-grey sm:grid-cols-3"
+      >
         {STEPS.map((item, index) => (
           <button
             key={item.title}
@@ -57,9 +61,7 @@ export function JourneyDemo() {
           <p className="text-sm font-semibold uppercase tracking-wider text-aubergine">
             Step {active + 1} of 3
           </p>
-          <h3 className="mt-3 font-display text-2xl font-bold text-plum">
-            {step.title}
-          </h3>
+          <h3 className="mt-3 font-display text-2xl font-bold text-plum">{step.title}</h3>
           <p className="mt-3 text-grey-purple">{step.text}</p>
         </div>
         <div aria-live="polite" className="rounded-2xl bg-charcoal p-6 text-white">

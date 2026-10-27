@@ -7,13 +7,7 @@ type Props = {
   onDark?: boolean;
 };
 
-export function SectionHeading({
-  eyebrow,
-  title,
-  intro,
-  align = "left",
-  onDark = false,
-}: Props) {
+export function SectionHeading({ eyebrow, title, intro, align = "left", onDark = false }: Props) {
   return (
     <div className={align === "center" ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
       {eyebrow && (
@@ -33,9 +27,7 @@ export function SectionHeading({
         {title}
       </h2>
       {intro && (
-        <p className={`mt-4 text-lg ${onDark ? "text-white/85" : "text-grey-purple"}`}>
-          {intro}
-        </p>
+        <p className={`mt-4 text-lg ${onDark ? "text-white/85" : "text-grey-purple"}`}>{intro}</p>
       )}
     </div>
   );

@@ -25,10 +25,16 @@ export function WaitingRoom() {
           <OperationsDemo />
           <div className="rounded-3xl bg-ivory p-8">
             <p className="text-sm font-semibold uppercase tracking-wider text-aubergine">Try it</p>
-            <h3 className="mt-3 font-display text-2xl font-bold text-plum">One live line for your whole team.</h3>
-            <p className="mt-3 text-grey-purple">Switch between the team queue, public display and analytics views. The demo uses fictional data and stays local to this page.</p>
+            <h3 className="mt-3 font-display text-2xl font-bold text-plum">
+              One live line for your whole team.
+            </h3>
+            <p className="mt-3 text-grey-purple">
+              Switch between the team queue, public display and analytics views. The demo uses
+              fictional data and stays local to this page.
+            </p>
             <div className="mt-6 rounded-xl border border-soft-grey bg-white p-4 text-sm text-grey-purple">
-              <span className="font-semibold text-plum">Privacy by design:</span> public screens show token numbers and counters only.
+              <span className="font-semibold text-plum">Privacy by design:</span> public screens
+              show token numbers and counters only.
             </div>
           </div>
         </div>

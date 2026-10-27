@@ -39,7 +39,10 @@ export function LiveQueueDemo() {
       aria-hidden="true"
     >
       <PhoneToken />
-      <TokenChip token={current.token} className="absolute -left-4 top-10 -rotate-6 text-2xl shadow-lg sm:-left-10 sm:text-3xl" />
+      <TokenChip
+        token={current.token}
+        className="absolute -left-4 top-10 -rotate-6 text-2xl shadow-lg sm:-left-10 sm:text-3xl"
+      />
       <div className="absolute bottom-8 left-1/2 w-44 -translate-x-1/2 rounded-xl bg-white p-3 text-center shadow-lg">
         <p className="text-xs text-grey-purple">People ahead</p>
         <p className="font-display text-lg font-bold text-plum">{current.ahead}</p>

@@ -16,9 +16,7 @@ export function TvDisplay() {
           <p className="mt-2 font-sans text-6xl font-bold tabular-nums text-lime sm:text-8xl">
             A-023
           </p>
-          <p className="mt-2 text-lg font-semibold uppercase tracking-widest">
-            Counter 02
-          </p>
+          <p className="mt-2 text-lg font-semibold uppercase tracking-widest">Counter 02</p>
         </div>
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/70">

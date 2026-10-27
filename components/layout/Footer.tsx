@@ -13,9 +13,7 @@ export function Footer() {
         </div>
 
         <nav aria-label="Footer: explore">
-          <h2 className="text-sm font-semibold uppercase tracking-wider text-lime">
-            Explore
-          </h2>
+          <h2 className="text-sm font-semibold uppercase tracking-wider text-lime">Explore</h2>
           <ul className="mt-4 space-y-2">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
@@ -28,9 +26,7 @@ export function Footer() {
         </nav>
 
         <nav aria-label="Footer: company">
-          <h2 className="text-sm font-semibold uppercase tracking-wider text-lime">
-            Company
-          </h2>
+          <h2 className="text-sm font-semibold uppercase tracking-wider text-lime">Company</h2>
           <ul className="mt-4 space-y-2">
             {FOOTER_LINKS.map((link) => (
               <li key={link.href}>

@@ -10,9 +10,8 @@ export function FinalCta() {
           Be one of our first clinics
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-lg text-white/85">
-          We&apos;re setting up a small number of pilot partners in Lahore, with
-          on-site installation and staff training. Our goal is to take you from
-          contract to live in 7 days.
+          We&apos;re setting up a small number of pilot partners in Lahore, with on-site
+          installation and staff training. Our goal is to take you from contract to live in 7 days.
         </p>
         <div className="mt-8">
           <Button href="/contact" variant="lime">

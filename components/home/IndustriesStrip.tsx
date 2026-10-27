@@ -12,7 +12,9 @@ export function IndustriesStrip() {
           title="One system. Every business where people wait."
           intro="Pick a template, set your services and go."
         />
-        <div className="mt-12"><IndustrySwitcher /></div>
+        <div className="mt-12">
+          <IndustrySwitcher />
+        </div>
         <div className="mt-10">
           {/* Swap to "/industries" when that page exists */}
           <Button href="/contact" variant="outline">

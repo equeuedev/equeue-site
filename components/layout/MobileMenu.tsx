@@ -28,7 +28,15 @@ export function MobileMenu() {
         onClick={() => setOpen((v) => !v)}
         className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-soft-grey bg-white text-plum"
       >
-        <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+        <svg
+          viewBox="0 0 24 24"
+          className="h-6 w-6"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          aria-hidden="true"
+        >
           {open ? (
             <>
               <line x1="6" y1="6" x2="18" y2="18" />

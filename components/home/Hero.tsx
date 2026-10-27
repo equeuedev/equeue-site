@@ -13,9 +13,9 @@ export function Hero() {
             Own your time.
           </h1>
           <p className="mt-6 max-w-xl text-lg text-grey-purple">
-            E-Queue lets patients join the line from their phone, wait wherever
-            they like, and arrive just before they&apos;re called. Your team
-            runs walk-ins, calls and bookings from one live queue.
+            E-Queue lets patients join the line from their phone, wait wherever they like, and
+            arrive just before they&apos;re called. Your team runs walk-ins, calls and bookings from
+            one live queue.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button href="/contact">Contact us</Button>

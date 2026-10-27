@@ -6,10 +6,7 @@ export function HowItWorks() {
   return (
     <section id="how-it-works" className="scroll-mt-20 py-16 sm:py-24">
       <Container>
-        <SectionHeading
-          eyebrow="How it works"
-          title="Three steps from the sofa to the doctor"
-        />
+        <SectionHeading eyebrow="How it works" title="Three steps from the sofa to the doctor" />
         <JourneyDemo />
       </Container>
     </section>

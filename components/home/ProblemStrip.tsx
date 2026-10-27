@@ -24,20 +24,12 @@ export function ProblemStrip() {
   return (
     <section className="bg-white py-16 sm:py-20">
       <Container>
-        <SectionHeading
-          align="center"
-          title="Waiting shouldn't mean standing there"
-        />
+        <SectionHeading align="center" title="Waiting shouldn't mean standing there" />
         <ul className="mt-12 grid gap-6 md:grid-cols-3">
           {PROBLEMS.map((p) => (
-            <li
-              key={p.title}
-              className="rounded-2xl border border-soft-grey bg-ivory p-6"
-            >
+            <li key={p.title} className="rounded-2xl border border-soft-grey bg-ivory p-6">
               <IconBadge name={p.icon} />
-              <h3 className="mt-4 font-display text-xl font-bold text-plum">
-                {p.title}
-              </h3>
+              <h3 className="mt-4 font-display text-xl font-bold text-plum">{p.title}</h3>
               <p className="mt-2 text-grey-purple">{p.text}</p>
             </li>
           ))}

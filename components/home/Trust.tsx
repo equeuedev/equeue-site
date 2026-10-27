@@ -25,11 +25,7 @@ export function Trust() {
   return (
     <section className="bg-white py-16 sm:py-24">
       <Container>
-        <SectionHeading
-          align="center"
-          eyebrow="Trust"
-          title="Privacy built into the screen"
-        />
+        <SectionHeading align="center" eyebrow="Trust" title="Privacy built into the screen" />
         <ul className="mt-12 grid gap-6 md:grid-cols-3">
           {POINTS.map((p) => (
             <li key={p.title} className="rounded-2xl border border-soft-grey bg-ivory p-6">
