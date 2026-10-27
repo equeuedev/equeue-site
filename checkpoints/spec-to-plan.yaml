@@ -1,0 +1,50 @@
+version: 1
+checkpoint: spec-to-plan
+spec:
+  references:
+    - C:\Users\Dell\Downloads\copilot-pack\docs\IMPLEMENTATION.md
+    - C:\Users\Dell\Downloads\copilot-pack\docs\COPY.md
+    - C:\Users\Dell\Downloads\copilot-pack\docs\BRAND-UPDATE.md
+requirements:
+  - id: REQ-001
+    description: Apply approved typography and design tokens
+    plan_items: ["1.1"]
+  - id: REQ-002
+    description: Use locked navigation, footer, and CTA routes
+    plan_items: ["1.1"]
+  - id: REQ-003
+    description: Preserve technical/runtime constraints and dependency limits
+    plan_items: ["1.1"]
+  - id: REQ-004
+    description: Add progressive-enhancement live queue animation
+    plan_items: ["2.1"]
+  - id: REQ-005
+    description: Add reveal behavior and mobile sticky CTA
+    plan_items: ["2.1"]
+  - id: REQ-006
+    description: Add secure accessible contact conversion form
+    plan_items: ["3.1"]
+  - id: REQ-007
+    description: Add typed industry content and switcher
+    plan_items: ["3.2"]
+  - id: REQ-008
+    description: Add industry overview/detail routes
+    plan_items: ["3.2"]
+  - id: REQ-009
+    description: Add clinic workflow and feature pages
+    plan_items: ["4.1"]
+  - id: REQ-010
+    description: Add appointments, comparison, and pilot pages
+    plan_items: ["4.1"]
+  - id: REQ-011
+    description: Add accessible mockups and counter demo
+    plan_items: ["4.1"]
+  - id: REQ-012
+    description: Add About and FAQ surfaces
+    plan_items: ["5.1"]
+  - id: REQ-013
+    description: Add conditional cookie-less analytics
+    plan_items: ["3.1", "5.1"]
+  - id: REQ-014
+    description: Add SEO surfaces and complete QA
+    plan_items: ["5.1", "6.1"]

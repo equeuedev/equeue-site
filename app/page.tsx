@@ -1,11 +1,23 @@
-import Image from "next/image";
+import { Hero } from "@/components/home/Hero";
+import { ProblemStrip } from "@/components/home/ProblemStrip";
+import { HowItWorks } from "@/components/home/HowItWorks";
+import { Benefits } from "@/components/home/Benefits";
+import { WaitingRoom } from "@/components/home/WaitingRoom";
+import { IndustriesStrip } from "@/components/home/IndustriesStrip";
+import { Trust } from "@/components/home/Trust";
+import { FinalCta } from "@/components/home/FinalCta";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between p-24 py-12">
-      <h1 className="text-3xl font-bold">COMING SOON!</h1>
-      <h2 className="text-3xl font-bold">Checking Deployment</h2>
-      <h3 className="text-3xl font-bold">Pushing into different mail</h3>
-    </div>
+    <>
+      <Hero />
+      <ProblemStrip />
+      <HowItWorks />
+      <Benefits />
+      <WaitingRoom />
+      <IndustriesStrip />
+      <Trust />
+      <FinalCta />
+    </>
   );
 }
