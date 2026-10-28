@@ -1,7 +1,18 @@
 import { MY_SERVICE, MY_TOKEN } from "@/lib/queue-demo";
 
-/** POS-receipt token slip: static identity only (token and service). Decorative. */
-export function SceneSlip({ className = "" }: { className?: string }) {
+/**
+ * POS-receipt token slip (PRD PRINT-01): business name, token, service, issued time, "Watch the display".
+ * No position, estimate, counter, priority or QR. Decorative.
+ */
+export function SceneSlip({
+  token = MY_TOKEN,
+  issued = "1:59 PM",
+  className = "",
+}: {
+  token?: string;
+  issued?: string;
+  className?: string;
+}) {
   return (
     <div
       className={`bg-white px-3 py-4 text-center text-plum shadow-xl ${className}`}
@@ -13,9 +24,10 @@ export function SceneSlip({ className = "" }: { className?: string }) {
     >
       <p className="text-[0.6rem] font-semibold uppercase tracking-wider">Example Clinic</p>
       <p className="mt-1.5 whitespace-nowrap font-sans text-2xl font-bold leading-none tabular-nums">
-        {MY_TOKEN}
+        {token}
       </p>
       <p className="mt-1.5 text-[0.65rem]">{MY_SERVICE}</p>
+      <p className="text-[0.55rem] tabular-nums text-grey-purple">Issued {issued}</p>
       <p className="mt-2 border-t border-dashed border-grey-purple pt-1.5 text-[0.55rem] font-semibold uppercase tracking-wider">
         Watch the display
       </p>

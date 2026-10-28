@@ -6,7 +6,8 @@ export const MY_SERVICE = "Ultrasound";
 export const MY_DOCTOR = "Dr. Ali";
 export const LEAVE_BY = "2:20 PM";
 
-export type TokenStatus = "Waiting" | "Next up" | "Called";
+/** Exact PRD entry states, plus the Completed outcome. No synonyms. */
+export type TokenStatus = "Waiting" | "Called" | "Serving" | "Completed";
 
 export type DemoStep = {
   /** Token being served at Counter 02 right now. */
@@ -24,6 +25,8 @@ export type DemoStep = {
   waiting: number;
   /** Recent calls on the waiting-room display, newest first. */
   recent: { token: string; counter: string }[];
+  /** Grace timer left after being Called (e.g. "4:58"). */
+  grace?: string;
 };
 
 const OTHER_CALLS = [
@@ -55,11 +58,11 @@ export const DEMO_STEPS: DemoStep[] = [
   step(38, 3, "~15 min", 20, "Waiting", null),
   step(39, 2, "~10 min", 45, "Waiting", null),
   step(40, 1, "~5 min", 70, "Waiting", null),
-  step(41, 0, "~2 min", 90, "Next up", "You're next. Head to Counter 02."),
+  step(41, 0, "~2 min", 90, "Waiting", "You're next. Head to Counter 02."),
   step(42, 0, "Now", 100, "Called", "Counter 02 is calling you."),
 ];
 
-/** Frame shown with JavaScript off or reduced motion: the "You're next" alert. */
+/** Frame shown with reduced motion: the "You're next" alert. */
 export const STATIC_STEP = 3;
 
 export const STEP_INTERVAL_MS = 3000;
