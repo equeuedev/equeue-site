@@ -74,6 +74,60 @@ const PATHS = {
       <line x1="15" y1="12" x2="3" y2="12" />
     </>
   ),
+  logout: (
+    <>
+      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+      <polyline points="16 17 21 12 16 7" />
+      <line x1="21" y1="12" x2="9" y2="12" />
+    </>
+  ),
+  arrowRight: (
+    <>
+      <line x1="5" y1="12" x2="19" y2="12" />
+      <polyline points="12 5 19 12 12 19" />
+    </>
+  ),
+  chevronRight: <polyline points="9 18 15 12 9 6" />,
+  grid: (
+    <>
+      <rect x="3" y="3" width="7" height="7" rx="1.5" />
+      <rect x="14" y="3" width="7" height="7" rx="1.5" />
+      <rect x="3" y="14" width="7" height="7" rx="1.5" />
+      <rect x="14" y="14" width="7" height="7" rx="1.5" />
+    </>
+  ),
+  building: (
+    <>
+      <rect x="4" y="2" width="16" height="20" rx="2" />
+      <line x1="9" y1="22" x2="9" y2="18" />
+      <line x1="15" y1="22" x2="15" y2="18" />
+      <line x1="9" y1="6" x2="9.01" y2="6" />
+      <line x1="15" y1="6" x2="15.01" y2="6" />
+      <line x1="9" y1="10" x2="9.01" y2="10" />
+      <line x1="15" y1="10" x2="15.01" y2="10" />
+      <line x1="9" y1="14" x2="9.01" y2="14" />
+      <line x1="15" y1="14" x2="15.01" y2="14" />
+    </>
+  ),
+  flag: (
+    <>
+      <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
+      <line x1="4" y1="22" x2="4" y2="15" />
+    </>
+  ),
+  help: (
+    <>
+      <circle cx="12" cy="12" r="10" />
+      <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+      <line x1="12" y1="17" x2="12.01" y2="17" />
+    </>
+  ),
+  mail: (
+    <>
+      <rect x="2" y="4" width="20" height="16" rx="2" />
+      <polyline points="22 6 12 13 2 6" />
+    </>
+  ),
 } as const;
 
 export type IconName = keyof typeof PATHS;

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Boldonse, Inter, Manrope } from "next/font/google";
+import { Boldonse, Inter_Tight, Manrope } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -14,8 +14,8 @@ const manrope = Manrope({
   display: "swap",
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const interTight = Inter_Tight({
+  variable: "--font-inter-tight",
   subsets: ["latin"],
   display: "swap",
 });
@@ -53,7 +53,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${manrope.variable} ${inter.variable} ${boldonse.variable} h-full antialiased`}
+      className={`${manrope.variable} ${interTight.variable} ${boldonse.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
         <a

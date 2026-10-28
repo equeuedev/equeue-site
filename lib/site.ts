@@ -3,30 +3,62 @@
 export const SITE = {
   name: "E-Queue",
   tagline: "Less waiting. More productive time.",
-  // TODO: set NEXT_PUBLIC_SITE_URL in Vercel once you have the real domain.
+  // TODO: set NEXT_PUBLIC_SITE_URL on the Render static site once you have the real domain.
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   // TODO: replace with the real contact details.
   email: "hello@example.com",
 };
 
-export type NavLink = { label: string; href: string };
+export type NavLink = {
+  label: string;
+  href: string;
+  /** Icon name from components/ui/Icon (used in the mobile drawer). */
+  icon?: "list" | "grid" | "building" | "flag" | "help";
+  /** One short line shown under the label in the mobile drawer. */
+  description?: string;
+};
 
-// For now these point at sections on the Home page. When you build the
-// dedicated pages (For Clinics, Industries, ...), swap the hrefs to
-// "/for-clinics", "/industries", etc. Nothing else needs to change.
+// Main navigation (header, mobile drawer and footer "Explore").
+// Appointments is intentionally not linked: PRD V1 §3 lists appointments as Out of scope.
 export const NAV_LINKS: NavLink[] = [
-  { label: "How it works", href: "/how-it-works" },
-  { label: "Features", href: "/features" },
-  { label: "Industries", href: "/industries" },
-  { label: "Appointments", href: "/appointments" },
-  { label: "Pilot", href: "/pilot" },
+  {
+    label: "How it works",
+    href: "/how-it-works",
+    icon: "list",
+    description: "From joining to being called",
+  },
+  {
+    label: "Features",
+    href: "/features",
+    icon: "grid",
+    description: "Live queue, display and token slips",
+  },
+  {
+    label: "Industries",
+    href: "/industries",
+    icon: "building",
+    description: "Clinics, dermatologists and more",
+  },
+  {
+    label: "Pilot program",
+    href: "/pilot",
+    icon: "flag",
+    description: "Be one of our first clinics in Lahore",
+  },
+  { label: "FAQ", href: "/faq", icon: "help", description: "Short answers to common questions" },
+];
+
+/** Secondary links shown in the mobile drawer under the main links. */
+export const DRAWER_LINKS: NavLink[] = [
+  { label: "For clinics", href: "/for-clinics" },
+  { label: "Why E-Queue", href: "/why-e-queue" },
+  { label: "About", href: "/about" },
 ];
 
 export const FOOTER_LINKS: NavLink[] = [
   { label: "For clinics", href: "/for-clinics" },
   { label: "Why E-Queue", href: "/why-e-queue" },
   { label: "About", href: "/about" },
-  { label: "FAQ", href: "/faq" },
   { label: "Contact us", href: "/contact" },
   { label: "Privacy Policy", href: "/privacy" },
   { label: "Terms", href: "/terms" },
