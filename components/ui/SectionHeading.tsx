@@ -20,7 +20,7 @@ export function SectionHeading({ eyebrow, title, intro, align = "left", onDark =
         </p>
       )}
       <h2
-        className={`font-hero text-3xl uppercase tracking-wide sm:text-4xl ${
+        className={`font-display text-2xl font-extrabold uppercase leading-[1.5] sm:text-3xl lg:text-[2.125rem] ${
           onDark ? "text-white" : "text-plum"
         }`}
       >

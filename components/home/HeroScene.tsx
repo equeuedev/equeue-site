@@ -1,6 +1,6 @@
 "use client";
 
-import { Icon } from "@/components/ui/Icon";
+import { PauseButton } from "@/components/ui/PauseButton";
 import { TokenChip } from "@/components/ui/TokenChip";
 import { useQueueDemo } from "@/hooks/useQueueDemo";
 import { SceneBoard } from "@/components/home/hero/SceneBoard";
@@ -76,17 +76,7 @@ export function HeroScene() {
         </div>
       </div>
 
-      {!reducedMotion && (
-        <button
-          type="button"
-          onClick={toggleUserPause}
-          aria-pressed={pausedByUser}
-          className="mx-auto mt-3 flex min-h-11 items-center gap-2 rounded-full px-3 text-sm font-medium text-grey-purple hover:text-plum"
-        >
-          <Icon name={pausedByUser ? "play" : "pause"} className="h-4 w-4" />
-          {pausedByUser ? "Play animation" : "Pause animation"}
-        </button>
-      )}
+      {!reducedMotion && <PauseButton paused={pausedByUser} onToggle={toggleUserPause} />}
     </div>
   );
 }
