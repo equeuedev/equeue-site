@@ -13,7 +13,7 @@ export type NavLink = {
   label: string;
   href: string;
   /** Icon name from components/ui/Icon (used in the mobile drawer). */
-  icon?: "list" | "grid" | "building" | "flag" | "help";
+  icon?: "home" | "list" | "grid" | "building" | "flag" | "help";
   /** One short line shown under the label in the mobile drawer. */
   description?: string;
 };
@@ -46,6 +46,16 @@ export const NAV_LINKS: NavLink[] = [
     description: "Be one of our first clinics in Lahore",
   },
   { label: "FAQ", href: "/faq", icon: "help", description: "Short answers to common questions" },
+];
+
+export const HOME_LINK: NavLink = { label: "Home", href: "/", icon: "home" };
+
+/** Floating bottom dock on phones and tablets. The last slot is the Menu button. */
+export const DOCK_LINKS: NavLink[] = [
+  HOME_LINK,
+  { label: "How it works", href: "/how-it-works", icon: "list" },
+  { label: "Features", href: "/features", icon: "grid" },
+  { label: "Pilot", href: "/pilot", icon: "flag" },
 ];
 
 /** Secondary links shown in the mobile drawer under the main links. */

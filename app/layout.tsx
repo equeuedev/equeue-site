@@ -1,18 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import { Boldonse, Inter_Tight, Manrope } from "next/font/google";
+import { Boldonse, Inter_Tight } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { SITE } from "@/lib/site";
-import { StickyCta } from "@/components/layout/StickyCta";
+import { BottomDock } from "@/components/layout/BottomDock";
 import Script from "next/script";
-
-const manrope = Manrope({
-  variable: "--font-manrope",
-  subsets: ["latin"],
-  weight: ["600", "700", "800"],
-  display: "swap",
-});
 
 const interTight = Inter_Tight({
   variable: "--font-inter-tight",
@@ -51,11 +44,8 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={`${manrope.variable} ${interTight.variable} ${boldonse.variable} h-full antialiased`}
-    >
-      <body className="flex min-h-full flex-col">
+    <html lang="en" className={`${interTight.variable} ${boldonse.variable} h-full antialiased`}>
+      <body className="flex min-h-full flex-col pb-24 lg:pb-0">
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-aubergine focus:px-4 focus:py-3 focus:text-white"
@@ -75,7 +65,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           {children}
         </main>
         <Footer />
-        <StickyCta />
+        <BottomDock />
       </body>
     </html>
   );

@@ -263,6 +263,9 @@ export function JoinScreen({ animate = false }: { animate?: boolean }) {
             animate ? "animate-slide-thumb" : "left-1"
           }`}
         >
+          {animate && (
+            <span className="animate-tap absolute -inset-2 rounded-full border-2 border-white/90 [animation-delay:150ms]" />
+          )}
           <Icon name="arrowRight" className="h-5 w-5" />
         </span>
       </div>

@@ -65,11 +65,14 @@ export function SceneBoard({ step, className = "" }: { step: FlowStep; className
       </ul>
 
       <div
-        className={`mt-2 rounded-full bg-lime py-2 text-center text-xs font-bold text-plum transition-transform duration-200 ${
+        className={`relative mt-2 rounded-full bg-lime py-2 text-center text-xs font-bold text-plum transition-transform duration-200 ${
           step.calling ? "scale-95 ring-4 ring-lime/40" : ""
         }`}
       >
         Call next
+        {step.calling && (
+          <span className="animate-tap absolute left-1/2 top-1/2 -ml-5 -mt-5 h-10 w-10 rounded-full border-2 border-plum/70" />
+        )}
       </div>
     </div>
   );

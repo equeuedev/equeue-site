@@ -11,7 +11,7 @@ import { DRAWER_LINKS, NAV_LINKS, SITE } from "@/lib/site";
 const FOCUSABLE = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
 /**
- * Hamburger + slide-in drawer for screens below 1024px.
+ * Menu button (last slot of the bottom dock) + slide-in drawer for screens below 1024px.
  * Rendered in a portal so the header's backdrop blur cannot clip it.
  * Dialog semantics, focus trap, Escape to close, scroll lock, focus returns to the trigger.
  */
@@ -72,7 +72,7 @@ export function MobileMenu() {
   }, [open, close]);
 
   return (
-    <div className="lg:hidden">
+    <div className="h-full">
       <button
         ref={triggerRef}
         type="button"
@@ -80,22 +80,10 @@ export function MobileMenu() {
         aria-controls="mobile-nav"
         aria-haspopup="dialog"
         onClick={() => setOpen(true)}
-        className="inline-flex h-11 items-center gap-2 rounded-full border border-soft-grey bg-white pl-4 pr-3 text-sm font-semibold text-plum shadow-sm hover:border-aubergine"
+        className="flex h-full w-full items-center justify-center rounded-full text-white/85 transition-colors hover:bg-white/10 hover:text-white"
       >
-        Menu
-        <svg
-          viewBox="0 0 24 24"
-          className="h-5 w-5"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          aria-hidden="true"
-        >
-          <line x1="4" y1="7" x2="20" y2="7" />
-          <line x1="8" y1="12" x2="20" y2="12" />
-          <line x1="4" y1="17" x2="20" y2="17" />
-        </svg>
+        <Icon name="menu" className="h-5 w-5" />
+        <span className="sr-only">Menu</span>
       </button>
 
       {open &&

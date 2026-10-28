@@ -39,7 +39,7 @@ type Options = {
 
 /**
  * Drives the home demos. One clock feeds every mockup so they never disagree.
- * Stops when: the visitor pauses it, they hover the scene, the tab is hidden,
+ * Stops when: the visitor pauses it, they hover the scene (if wired), the scene is off screen, the tab is hidden,
  * or they prefer reduced motion (then a single static frame is shown).
  * Pausing keeps the time left on the current step, so progress bars stay in sync.
  */
@@ -48,10 +48,11 @@ export function useQueueDemo({ stepCount, intervalMs, durations, staticStep }: O
   const [picked, setPicked] = useState(false);
   const [pausedByUser, setPausedByUser] = useState(false);
   const [pausedByHover, setPausedByHover] = useState(false);
+  const [offscreen, setOffscreen] = useState(false);
   const reducedMotion = useReducedMotion();
   const tabHidden = useTabHidden();
 
-  const running = !reducedMotion && !pausedByUser && !pausedByHover && !tabHidden;
+  const running = !reducedMotion && !pausedByUser && !pausedByHover && !tabHidden && !offscreen;
 
   const durationOf = useCallback(
     (index: number) => durations?.[index] ?? intervalMs,
@@ -94,6 +95,8 @@ export function useQueueDemo({ stepCount, intervalMs, durations, staticStep }: O
     pausedByUser,
     toggleUserPause: () => setPausedByUser((value) => !value),
     setPausedByHover,
+    /** Pause while the scene is scrolled out of view, so visitors never miss the start. */
+    setOffscreen,
     /** Jump to a step (e.g. from a timeline button). */
     goTo: (index: number) => {
       setPicked(true);
