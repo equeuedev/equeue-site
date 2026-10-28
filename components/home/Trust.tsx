@@ -34,7 +34,7 @@ export function Trust() {
   return (
     <section className="bg-white py-16 sm:py-24">
       <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-14">
-        <Reveal>
+        <Reveal variant="left">
           <div
             aria-hidden="true"
             className="on-dark relative h-[26rem] overflow-hidden rounded-[2rem] bg-aubergine sm:rounded-[2.5rem]"
@@ -59,26 +59,30 @@ export function Trust() {
                 Names and phone numbers are never shown.
               </p>
             </div>
-            <div className="absolute -right-6 top-36 hidden rotate-3 sm:right-2 sm:block">
+            <div className="animate-float absolute -right-6 top-36 hidden rotate-3 [animation-duration:7s] sm:right-2 sm:block">
               <IPhone scale={0.7}>
                 <TokenScreen step={DEMO_STEPS[0]} />
               </IPhone>
             </div>
-            <span className="absolute right-6 top-6 rotate-3 rounded-full bg-lime px-3.5 py-1.5 text-xs font-bold text-plum shadow-lg">
+            <span className="animate-float absolute right-6 top-6 rotate-3 rounded-full [animation-duration:4.5s] bg-lime px-3.5 py-1.5 text-xs font-bold text-plum shadow-lg">
               Tokens, not names
             </span>
           </div>
         </Reveal>
 
-        <Reveal delay={120}>
+        <Reveal variant="right" delay={120}>
           <SectionHeading
             eyebrow="Trust"
             title="Privacy built into the screen"
             highlight="built into the screen"
           />
           <ul className="mt-8 space-y-6">
-            {POINTS.map((p) => (
-              <li key={p.title} className="flex gap-4">
+            {POINTS.map((p, index) => (
+              <li
+                key={p.title}
+                className="reveal-item group flex gap-4"
+                style={{ animationDelay: `${300 + index * 120}ms` }}
+              >
                 <IconBadge name={p.icon} />
                 <div>
                   <h3 className="font-display text-lg font-bold text-plum">{p.title}</h3>

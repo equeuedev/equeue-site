@@ -10,9 +10,10 @@ function Tokens() {
         {Array.from({ length: 12 }, (_, i) => (
           <span
             key={i}
-            className={`rounded-lg border border-soft-grey py-1.5 text-center font-sans text-sm font-bold tabular-nums ${
+            className={`animate-hop rounded-lg border border-soft-grey py-1.5 text-center font-sans text-sm font-bold tabular-nums ${
               i === 5 ? "bg-lime" : "bg-white"
             }`}
+            style={{ animationDelay: `${i * 400}ms` }}
           >
             A-{String(30 + i).padStart(3, "0")}
           </span>
@@ -32,11 +33,11 @@ function UnknownWait() {
       <span className="absolute left-5 top-4 rounded-full bg-soft-grey px-3 py-1 text-xs font-semibold text-plum">
         No idea how long
       </span>
-      <p className="absolute inset-x-0 top-14 text-center font-sans text-6xl font-bold tabular-nums text-soft-grey">
+      <p className="animate-pulse-soft absolute inset-x-0 top-14 text-center font-sans text-6xl font-bold tabular-nums text-soft-grey">
         ?? min
       </p>
-      <div className="absolute inset-x-6 bottom-6 h-2 rounded-full bg-soft-grey">
-        <div className="h-full w-1/3 rounded-full bg-grey-purple" />
+      <div className="absolute inset-x-6 bottom-6 h-2 overflow-hidden rounded-full bg-soft-grey">
+        <div className="animate-scan h-full w-1/3 rounded-full bg-grey-purple" />
       </div>
     </>
   );
@@ -62,7 +63,7 @@ function FrontDesk() {
           </span>
         ))}
       </div>
-      <div className="absolute inset-x-5 top-[5.5rem] rounded-xl border border-soft-grey bg-white px-3 py-2.5 text-xs">
+      <div className="animate-float absolute inset-x-5 top-[5.5rem] rounded-xl border border-soft-grey bg-white px-3 py-2.5 text-xs shadow-sm [animation-duration:4s]">
         <p className="font-semibold">Front desk</p>
         <p className="text-grey-purple">&ldquo;How long will it take?&rdquo; again</p>
       </div>
@@ -100,11 +101,11 @@ export function ProblemStrip() {
         <ul className="mt-12 grid gap-6 md:grid-cols-3">
           {PROBLEMS.map((p, index) => (
             <li key={p.title}>
-              <Reveal delay={index * 120} className="h-full">
-                <article className="h-full rounded-3xl border border-soft-grey bg-white p-4 pb-6">
+              <Reveal variant="scale" delay={index * 120} className="h-full">
+                <article className="group h-full rounded-3xl border border-soft-grey bg-white p-4 pb-6 transition duration-300 hover:-translate-y-1 hover:border-aubergine/30 hover:shadow-xl">
                   <div
                     aria-hidden="true"
-                    className="relative h-48 overflow-hidden rounded-2xl bg-ivory"
+                    className="relative h-48 overflow-hidden rounded-2xl bg-ivory transition-transform duration-500 group-hover:scale-[1.02]"
                   >
                     {p.visual}
                   </div>

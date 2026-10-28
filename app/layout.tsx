@@ -4,7 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { SITE } from "@/lib/site";
-import { BottomDock } from "@/components/layout/BottomDock";
+import { MobileDock } from "@/components/layout/MobileDock";
 import Script from "next/script";
 
 const interTight = Inter_Tight({
@@ -45,7 +45,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${interTight.variable} ${boldonse.variable} h-full antialiased`}>
-      <body className="flex min-h-full flex-col pb-24 lg:pb-0">
+      <body className="flex min-h-full flex-col">
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-aubergine focus:px-4 focus:py-3 focus:text-white"
@@ -53,6 +53,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Skip to content
         </a>
         <Header />
+        <MobileDock />
         {process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN ? (
           <Script
             defer
@@ -61,11 +62,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             strategy="afterInteractive"
           />
         ) : null}
-        <main id="main" className="flex-1">
+        {/* Room for the fixed top dock on phones and tablets */}
+        <main id="main" className="flex-1 pt-20 lg:pt-0">
           {children}
         </main>
         <Footer />
-        <BottomDock />
       </body>
     </html>
   );

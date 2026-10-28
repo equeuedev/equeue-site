@@ -2,6 +2,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Icon } from "@/components/ui/Icon";
 import { WaitingRoomScene } from "@/components/home/WaitingRoomScene";
+import { Reveal } from "@/components/ui/Reveal";
 
 const POINTS = [
   { icon: "printer", text: "A printed token slip for patients without the app." },
@@ -16,15 +17,19 @@ export function WaitingRoom() {
   return (
     <section className="bg-white py-16 sm:py-24">
       <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-14">
-        <div>
+        <Reveal variant="left">
           <SectionHeading
             eyebrow="In the waiting room"
             title="Everyone stays in the loop, even without the app"
             highlight="in the loop"
           />
           <ul className="mt-8 space-y-5">
-            {POINTS.map((p) => (
-              <li key={p.text} className="flex items-center gap-4">
+            {POINTS.map((p, index) => (
+              <li
+                key={p.text}
+                className="reveal-item flex items-center gap-4"
+                style={{ animationDelay: `${200 + index * 120}ms` }}
+              >
                 <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-aubergine text-white">
                   <Icon name={p.icon} />
                 </span>
@@ -36,8 +41,10 @@ export function WaitingRoom() {
             <span className="font-semibold text-plum">Privacy by design:</span> public screens show
             token numbers and counters only.
           </p>
-        </div>
-        <WaitingRoomScene />
+        </Reveal>
+        <Reveal variant="right" delay={120}>
+          <WaitingRoomScene />
+        </Reveal>
       </Container>
     </section>
   );

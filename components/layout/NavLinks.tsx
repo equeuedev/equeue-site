@@ -22,7 +22,7 @@ export function NavLinks() {
   const pathname = usePathname();
 
   return (
-    <nav aria-label="Main">
+    <nav aria-label="Main" className="relative">
       <ul className="flex items-center gap-1">
         {LINKS.map((link) => {
           const active = isActivePath(pathname, link.href);

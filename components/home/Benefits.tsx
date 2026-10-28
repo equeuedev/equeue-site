@@ -22,8 +22,12 @@ const CLINIC_POINTS = [
 function Points({ items }: { items: string[] }) {
   return (
     <ul className="mt-6 space-y-3">
-      {items.map((item) => (
-        <li key={item} className="flex gap-3">
+      {items.map((item, index) => (
+        <li
+          key={item}
+          className="reveal-item flex gap-3"
+          style={{ animationDelay: `${300 + index * 120}ms` }}
+        >
           <span className="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-aubergine text-white">
             <Icon name="check" className="h-4 w-4" />
           </span>
@@ -38,7 +42,7 @@ function Callout({ children, className }: { children: string; className: string 
   return (
     <span
       aria-hidden="true"
-      className={`absolute z-10 rounded-full bg-lime px-3.5 py-1.5 text-xs font-bold text-plum shadow-lg ${className}`}
+      className={`animate-float absolute z-10 rounded-full bg-lime px-3.5 py-1.5 text-xs font-bold text-plum shadow-lg [animation-duration:5s] ${className}`}
     >
       {children}
     </span>
@@ -53,7 +57,7 @@ export function Benefits() {
           id="what-your-patients-get"
           className="grid scroll-mt-20 items-center gap-10 lg:grid-cols-[26rem_1fr] lg:gap-14"
         >
-          <Reveal>
+          <Reveal variant="left">
             <div className="on-dark relative flex h-[440px] justify-center overflow-hidden rounded-[2rem] bg-aubergine pt-8 sm:h-[470px] sm:rounded-[2.5rem]">
               <div
                 aria-hidden="true"
@@ -66,7 +70,7 @@ export function Benefits() {
               <Callout className="right-3 top-[21.5rem] rotate-3 sm:right-4">Leave-by time</Callout>
             </div>
           </Reveal>
-          <Reveal delay={120}>
+          <Reveal variant="right" delay={120}>
             <SectionHeading
               eyebrow="What your patients get"
               title="Wait anywhere"
@@ -82,7 +86,7 @@ export function Benefits() {
           id="for-clinics"
           className="grid scroll-mt-20 items-center gap-10 lg:grid-cols-[1fr_38rem] lg:gap-14"
         >
-          <Reveal className="lg:order-1">
+          <Reveal variant="left" className="lg:order-1">
             <SectionHeading
               eyebrow="For clinics"
               title="A calmer front desk, and numbers to run on"
@@ -90,7 +94,7 @@ export function Benefits() {
             />
             <Points items={CLINIC_POINTS} />
           </Reveal>
-          <Reveal delay={120} className="lg:order-2">
+          <Reveal variant="right" delay={120} className="lg:order-2">
             <div className="on-dark rounded-[2rem] bg-aubergine p-4 sm:rounded-[2.5rem] sm:p-7">
               <CounterDashboard />
               <p className="mt-3 text-center text-xs text-white/70">

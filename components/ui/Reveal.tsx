@@ -7,16 +7,24 @@ import { useReveal } from "@/hooks/useReveal";
 export function Reveal({
   children,
   delay = 0,
+  variant = "up",
   className = "",
 }: {
   children: ReactNode;
   /** Stagger in milliseconds. */
   delay?: number;
+  /** How it enters: lift (default), grow, slide from a side, or come into focus. */
+  variant?: "up" | "scale" | "left" | "right" | "blur";
   className?: string;
 }) {
   const ref = useReveal<HTMLDivElement>();
+  const variantClass = variant === "up" ? "" : `reveal-${variant}`;
   return (
-    <div ref={ref} className={`reveal ${className}`} style={{ transitionDelay: `${delay}ms` }}>
+    <div
+      ref={ref}
+      className={`reveal ${variantClass} ${className}`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
       {children}
     </div>
   );

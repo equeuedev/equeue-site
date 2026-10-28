@@ -1,9 +1,12 @@
 import type { ReactNode } from "react";
 
-/** Lime marker behind important words, as in the hero. Dark plum text on lime (never white). */
+/**
+ * Lime marker behind important words, as in the hero. Dark plum text on lime (never white).
+ * Inside a <Reveal>, the marker draws in from left to right when it scrolls into view.
+ */
 export function Highlight({ children }: { children: ReactNode }) {
   return (
-    <span className="rounded-lg bg-lime px-2 text-plum [box-decoration-break:clone] [-webkit-box-decoration-break:clone]">
+    <span className="marker rounded-lg px-2 text-plum [box-decoration-break:clone] [-webkit-box-decoration-break:clone]">
       {children}
     </span>
   );

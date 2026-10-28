@@ -1,4 +1,5 @@
 import { HighlightedText } from "@/components/ui/Highlight";
+import { Reveal } from "@/components/ui/Reveal";
 
 type Props = {
   eyebrow?: string;
@@ -20,7 +21,7 @@ export function SectionHeading({
   onDark = false,
 }: Props) {
   return (
-    <div className={align === "center" ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
+    <Reveal className={align === "center" ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
       {eyebrow && (
         <p
           className={`mb-3 text-sm font-semibold uppercase tracking-wider ${
@@ -40,6 +41,6 @@ export function SectionHeading({
       {intro && (
         <p className={`mt-4 text-lg ${onDark ? "text-white/85" : "text-grey-purple"}`}>{intro}</p>
       )}
-    </div>
+    </Reveal>
   );
 }

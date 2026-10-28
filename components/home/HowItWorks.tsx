@@ -46,13 +46,13 @@ export function HowItWorks() {
           <ol className="relative grid gap-12 md:grid-cols-3 md:gap-6">
             {STEPS.map((step, index) => (
               <li key={step.title}>
-                <Reveal delay={index * 150} className="text-center">
+                <Reveal variant="scale" delay={index * 150} className="group text-center">
                   {/* Phone is cropped by the stage on desktop; full height on mobile */}
-                  <div className="h-[360px] overflow-hidden sm:h-[430px]">
+                  <div className="h-[360px] overflow-hidden pt-2 transition-transform duration-500 group-hover:-translate-y-2 sm:h-[430px]">
                     <IPhone scale={0.82}>{step.screen}</IPhone>
                   </div>
                   <div className="pb-10 pt-5">
-                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-lime text-sm font-bold text-plum">
+                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-lime text-sm font-bold text-plum transition-transform duration-300 group-hover:scale-110">
                       {index + 1}
                     </span>
                     <h3 className="mt-3 font-display text-xl font-bold text-white">{step.title}</h3>

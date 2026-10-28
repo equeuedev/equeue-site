@@ -4,30 +4,33 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Icon } from "@/components/ui/Icon";
 import { MobileMenu } from "@/components/layout/MobileMenu";
+import { NavGlow } from "@/components/layout/NavGlow";
 import { isActivePath } from "@/components/layout/NavLinks";
 import { DOCK_LINKS } from "@/lib/site";
 
 /**
- * Floating bottom dock for phones and tablets (below 1024px), the only navigation on those sizes,
- * in the style of the app tab bar: frosted Dark Plum (#292332) pill, active item grows into a lime pill with its label, others show the icon only
- * (label kept for screen readers). The last slot opens the full menu drawer.
+ * Floating top dock for phones and tablets (below 1024px), the only navigation on those sizes.
+ * App tab bar style: frosted-glass Dark Plum (#292332) pill; the active item grows into a lime
+ * pill with its label, others show the icon only (label kept for screen readers).
+ * The last slot opens the menu drawer.
  */
-export function BottomDock() {
+export function MobileDock() {
   const pathname = usePathname();
 
   return (
     <nav
       aria-label="Quick links"
-      className="on-dark fixed inset-x-3 bottom-3 z-40 lg:hidden"
-      style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
+      className="on-dark fixed inset-x-3 top-3 z-50 lg:hidden"
+      style={{ marginTop: "env(safe-area-inset-top)" }}
     >
-      <ul className="mx-auto flex h-16 max-w-md items-center gap-1 rounded-full bg-plum/90 p-1.5 shadow-2xl shadow-plum/30 ring-1 ring-white/10 backdrop-blur-xl backdrop-saturate-150">
+      <ul className="glass-nav relative mx-auto flex h-16 max-w-md items-center gap-1 rounded-full p-1.5">
+        <NavGlow />
         {DOCK_LINKS.map((link) => {
           const active = isActivePath(pathname, link.href);
           return (
             <li
               key={link.href}
-              className={`h-full transition-[flex-grow] duration-300 ease-out ${active ? "grow-[2.4]" : "grow"}`}
+              className={`relative h-full transition-[flex-grow] duration-300 ease-out ${active ? "grow-[2.4]" : "grow"}`}
               style={{ flexBasis: 0 }}
             >
               <Link
@@ -49,7 +52,7 @@ export function BottomDock() {
             </li>
           );
         })}
-        <li className="h-full grow" style={{ flexBasis: 0 }}>
+        <li className="relative h-full grow" style={{ flexBasis: 0 }}>
           <MobileMenu />
         </li>
       </ul>
