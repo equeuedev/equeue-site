@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Icon } from "@/components/ui/Icon";
 import { NavLinks } from "@/components/layout/NavLinks";
 
 /** Text wordmark until the logo files are supplied. */
@@ -16,14 +15,15 @@ export function Wordmark({ light = false }: { light?: boolean }) {
 }
 
 /**
- * Floating, rounded navbar: a Dark Plum pill that stays at the top while the page scrolls under it.
- * Active link is a lime pill with Dark Plum text (never white on lime).
- * Below 1024px the links move to the floating bottom dock (BottomDock).
+ * Floating, rounded navbar for desktop (1024px and up): a frosted Dark Plum (#292332) pill
+ * that blurs the page as it scrolls underneath. Text links only, no icons.
+ * Active link: soft lime tint with lime text, so it never looks like the solid lime Contact us button.
+ * Phones and tablets have no top bar; they use the floating bottom dock (BottomDock) instead.
  */
 export function Header() {
   return (
-    <header className="pointer-events-none sticky top-0 z-50 px-3 pt-3 sm:px-4 sm:pt-4">
-      <div className="on-dark pointer-events-auto mx-auto flex h-16 max-w-[1200px] items-center justify-between gap-3 rounded-full bg-plum/95 pl-5 pr-2 shadow-xl shadow-plum/25 ring-1 ring-white/10 backdrop-blur-md sm:pl-6">
+    <header className="pointer-events-none sticky top-0 z-50 hidden px-4 pt-4 lg:block">
+      <div className="on-dark pointer-events-auto mx-auto flex h-16 max-w-[1200px] items-center justify-between gap-4 rounded-full bg-plum/90 pl-7 pr-2 shadow-xl shadow-plum/20 ring-1 ring-white/10 backdrop-blur-xl backdrop-saturate-150">
         <Link href="/" aria-label="E-Queue home" className="shrink-0 rounded-full">
           <Wordmark light />
         </Link>
@@ -32,10 +32,9 @@ export function Header() {
 
         <Link
           href="/contact"
-          className="inline-flex min-h-12 shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-lime px-5 text-sm font-bold text-plum transition hover:brightness-95 sm:px-6 sm:text-base"
+          className="inline-flex min-h-12 shrink-0 items-center whitespace-nowrap rounded-full bg-lime px-6 text-sm font-bold text-plum transition hover:brightness-95"
         >
           Contact us
-          <Icon name="arrowRight" className="hidden h-4 w-4 sm:block" />
         </Link>
       </div>
     </header>

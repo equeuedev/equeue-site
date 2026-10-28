@@ -8,8 +8,8 @@ import { isActivePath } from "@/components/layout/NavLinks";
 import { DOCK_LINKS } from "@/lib/site";
 
 /**
- * Floating bottom dock for phones and tablets (below 1024px), in the style of the app tab bar:
- * Dark Plum pill, active item grows into a lime pill with its label, others show the icon only
+ * Floating bottom dock for phones and tablets (below 1024px), the only navigation on those sizes,
+ * in the style of the app tab bar: frosted Dark Plum (#292332) pill, active item grows into a lime pill with its label, others show the icon only
  * (label kept for screen readers). The last slot opens the full menu drawer.
  */
 export function BottomDock() {
@@ -21,7 +21,7 @@ export function BottomDock() {
       className="on-dark fixed inset-x-3 bottom-3 z-40 lg:hidden"
       style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
     >
-      <ul className="mx-auto flex h-16 max-w-md items-center gap-1 rounded-full bg-plum/95 p-1.5 shadow-2xl shadow-plum/40 ring-1 ring-white/10 backdrop-blur-md">
+      <ul className="mx-auto flex h-16 max-w-md items-center gap-1 rounded-full bg-plum/90 p-1.5 shadow-2xl shadow-plum/30 ring-1 ring-white/10 backdrop-blur-xl backdrop-saturate-150">
         {DOCK_LINKS.map((link) => {
           const active = isActivePath(pathname, link.href);
           return (
