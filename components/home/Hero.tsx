@@ -14,56 +14,53 @@ const PROOF_POINTS: { icon: IconName; text: string }[] = [
 export function Hero() {
   return (
     <section className="overflow-hidden">
-      <Container className="grid items-center gap-14 pb-10 pt-12 sm:pt-16 xl:grid-cols-[0.9fr_1.1fr] xl:gap-10 xl:pb-14 xl:pt-20">
-        <div>
-          <p className="inline-flex items-center gap-2 rounded-full border border-soft-grey bg-white px-4 py-1.5 text-sm font-medium text-plum">
-            <span aria-hidden="true" className="h-2 w-2 rounded-full bg-aubergine" />
-            Queues and appointments for service institutes
-          </p>
+      <Container className="flex flex-col items-center pt-12 text-center sm:pt-16 xl:pt-20">
+        <p className="inline-flex items-center gap-2 rounded-full border border-soft-grey bg-white px-4 py-1.5 text-sm font-medium text-plum">
+          <span aria-hidden="true" className="h-2 w-2 rounded-full bg-aubergine" />
+          Queues and appointments for service institutes
+        </p>
 
-          <h1 className="mt-6 font-hero text-[clamp(1.75rem,6.5vw,3.5rem)] uppercase tracking-wide text-plum">
-            Know your turn.
-            <br />
-            <span className="rounded-xl bg-lime px-2 [box-decoration-break:clone]">
-              Own your time.
-            </span>
-          </h1>
+        <h1 className="mt-6 font-hero text-[clamp(1.75rem,8vw,4.5rem)] uppercase tracking-wide text-plum">
+          Know your turn.
+          <br />
+          <span className="rounded-xl bg-lime px-3 [box-decoration-break:clone]">
+            Own your time.
+          </span>
+        </h1>
 
-          <p className="mt-6 max-w-xl text-lg text-grey-purple">
-            E-Queue lets patients join the line from their phone, wait wherever they like, and
-            arrive just before they&apos;re called. Your team runs walk-ins, calls and bookings from
-            one live queue.
-          </p>
+        <p className="mt-6 max-w-2xl text-lg text-grey-purple">
+          E-Queue lets patients join the line from their phone, wait wherever they like, and arrive
+          just before they&apos;re called. Your team runs walk-ins, calls and bookings from one live
+          queue.
+        </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Button href="/contact">Contact us</Button>
-            <Button href="#how-it-works" variant="outline">
-              See how it works
-            </Button>
-          </div>
-
-          <ul className="mt-8 space-y-3">
-            {PROOF_POINTS.map((point) => (
-              <li
-                key={point.text}
-                className="flex items-center gap-3 text-sm font-medium text-plum"
-              >
-                <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-aubergine text-white">
-                  <Icon name={point.icon} className="h-4 w-4" />
-                </span>
-                {point.text}
-              </li>
-            ))}
-          </ul>
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <Button href="/contact">Contact us</Button>
+          <Button href="#how-it-works" variant="outline">
+            See how it works
+          </Button>
         </div>
 
+        <ul className="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-8">
+          {PROOF_POINTS.map((point) => (
+            <li key={point.text} className="flex items-center gap-3 text-sm font-medium text-plum">
+              <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-aubergine text-white">
+                <Icon name={point.icon} className="h-4 w-4" />
+              </span>
+              {point.text}
+            </li>
+          ))}
+        </ul>
+      </Container>
+
+      <Container className="mt-12">
         <HeroScene />
       </Container>
 
       <Container className="pb-12 xl:pb-16">
         <nav
           aria-label="Industries we serve"
-          className="flex flex-wrap items-center gap-x-3 gap-y-2 border-t border-soft-grey pt-6"
+          className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 pt-6"
         >
           <span className="text-sm font-semibold text-grey-purple">Made for</span>
           {INDUSTRIES.slice(0, 3).map((industry) => (

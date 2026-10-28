@@ -6,7 +6,7 @@ const OTHER_COUNTERS = [
 ];
 
 /** Reception's counter board. Decorative; example data only. */
-export function SceneBoard({ step }: { step: DemoStep }) {
+export function SceneBoard({ step, className = "" }: { step: DemoStep; className?: string }) {
   const rows = [
     OTHER_COUNTERS[0],
     { name: "Counter 02", doctor: "Dr. Ali", token: step.serving, state: "In service" },
@@ -14,7 +14,7 @@ export function SceneBoard({ step }: { step: DemoStep }) {
   ];
 
   return (
-    <div className="rounded-2xl bg-white p-4 text-plum shadow-xl">
+    <div className={`rounded-2xl bg-white p-4 text-plum shadow-xl ${className}`}>
       <div className="flex items-center justify-between">
         <p className="text-xs font-semibold">Counter board</p>
         <span className="rounded-full bg-ivory px-2.5 py-1 text-[0.65rem] font-semibold tabular-nums text-grey-purple">
