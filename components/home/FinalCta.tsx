@@ -1,4 +1,5 @@
 import { Container } from "@/components/ui/Container";
+import { Highlight } from "@/components/ui/Highlight";
 import { Button } from "@/components/ui/Button";
 import { IPhone } from "@/components/ui/IPhone";
 import { TokenScreen } from "@/components/phone/PhoneScreens";
@@ -15,8 +16,8 @@ export function FinalCta() {
             className="pointer-events-none absolute -bottom-28 -left-16 h-72 w-72 rounded-full bg-lime/10"
           />
           <div className="relative">
-            <h2 className="max-w-xl font-display text-3xl font-extrabold uppercase leading-[1.5] text-white sm:text-4xl">
-              Be one of our first clinics
+            <h2 className="max-w-xl font-hero text-2xl uppercase leading-[1.5] tracking-wide text-white sm:text-3xl lg:text-4xl">
+              Be one of our <Highlight>first clinics</Highlight>
             </h2>
             <p className="mt-4 max-w-xl text-lg text-white/85">
               We&apos;re setting up a small number of pilot partners in Lahore, with on-site

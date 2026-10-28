@@ -92,7 +92,11 @@ export function ProblemStrip() {
   return (
     <section className="bg-white py-16 sm:py-20">
       <Container>
-        <SectionHeading align="center" title="Waiting shouldn't mean standing there" />
+        <SectionHeading
+          align="center"
+          title="Waiting shouldn't mean standing there"
+          highlight="standing there"
+        />
         <ul className="mt-12 grid gap-6 md:grid-cols-3">
           {PROBLEMS.map((p, index) => (
             <li key={p.title}>

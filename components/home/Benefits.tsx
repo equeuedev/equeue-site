@@ -67,7 +67,11 @@ export function Benefits() {
             </div>
           </Reveal>
           <Reveal delay={120}>
-            <SectionHeading eyebrow="What your patients get" title="Wait anywhere" />
+            <SectionHeading
+              eyebrow="What your patients get"
+              title="Wait anywhere"
+              highlight="anywhere"
+            />
             <Points items={PATIENT_POINTS} />
           </Reveal>
         </div>
@@ -82,6 +86,7 @@ export function Benefits() {
             <SectionHeading
               eyebrow="For clinics"
               title="A calmer front desk, and numbers to run on"
+              highlight="calmer front desk"
             />
             <Points items={CLINIC_POINTS} />
           </Reveal>

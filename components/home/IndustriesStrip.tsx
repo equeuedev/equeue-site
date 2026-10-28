@@ -21,6 +21,7 @@ export function IndustriesStrip() {
         <SectionHeading
           eyebrow="Industries"
           title="One system. Every business where people wait."
+          highlight="Every business"
           intro="Pick a template, set your services and go."
         />
         <ul className="mt-12 grid gap-6 md:grid-cols-3">

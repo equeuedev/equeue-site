@@ -71,7 +71,11 @@ export function Trust() {
         </Reveal>
 
         <Reveal delay={120}>
-          <SectionHeading eyebrow="Trust" title="Privacy built into the screen" />
+          <SectionHeading
+            eyebrow="Trust"
+            title="Privacy built into the screen"
+            highlight="built into the screen"
+          />
           <ul className="mt-8 space-y-6">
             {POINTS.map((p) => (
               <li key={p.title} className="flex gap-4">

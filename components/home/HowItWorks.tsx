@@ -28,7 +28,11 @@ export function HowItWorks() {
   return (
     <section id="how-it-works" className="scroll-mt-20 py-16 sm:py-24">
       <Container>
-        <SectionHeading eyebrow="How it works" title="Three steps from the sofa to the doctor" />
+        <SectionHeading
+          eyebrow="How it works"
+          title="Three steps from the sofa to the doctor"
+          highlight="sofa to the doctor"
+        />
 
         <div className="on-dark relative mt-10 overflow-hidden rounded-[2rem] bg-aubergine px-6 pt-10 sm:rounded-[2.5rem] sm:px-10">
           <div

@@ -20,6 +20,7 @@ export function WaitingRoom() {
           <SectionHeading
             eyebrow="In the waiting room"
             title="Everyone stays in the loop, even without the app"
+            highlight="in the loop"
           />
           <ul className="mt-8 space-y-5">
             {POINTS.map((p) => (
