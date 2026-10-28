@@ -64,12 +64,3 @@ export const DRAWER_LINKS: NavLink[] = [
   { label: "Why E-Queue", href: "/why-e-queue" },
   { label: "About", href: "/about" },
 ];
-
-export const FOOTER_LINKS: NavLink[] = [
-  { label: "For clinics", href: "/for-clinics" },
-  { label: "Why E-Queue", href: "/why-e-queue" },
-  { label: "About", href: "/about" },
-  { label: "Contact us", href: "/contact" },
-  { label: "Privacy Policy", href: "/privacy" },
-  { label: "Terms", href: "/terms" },
-];
