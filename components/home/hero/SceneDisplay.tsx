@@ -17,7 +17,10 @@ export function SceneDisplay({
   return (
     <div className={className}>
       <div className="overflow-hidden rounded-2xl border-[6px] border-[#0e0a14] bg-charcoal text-white shadow-2xl shadow-black/40">
-        <div className="p-4 text-center">
+        <div
+          key={called ? token : "idle"}
+          className={`p-4 text-center ${called ? "animate-flash" : ""}`}
+        >
           <p className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-white/70">
             Now serving
           </p>

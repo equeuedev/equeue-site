@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { Icon } from "@/components/ui/Icon";
 import { useQueueDemo } from "@/hooks/useQueueDemo";
 import { SceneBoard } from "@/components/home/hero/SceneBoard";
@@ -24,10 +25,29 @@ function lastPush(index: number) {
   return FLOW_STEPS.find((step) => step.push)!.push!;
 }
 
+/** Lime pieces that burst out of the token when the visit is Completed. */
+const BURST = Array.from({ length: 12 }, (_, i) => ({
+  angle: `${i * 30}deg`,
+  delay: `${200 + (i % 3) * 90}ms`,
+  lime: i % 2 === 0,
+}));
+
 /**
- * Full-width hero stage that plays the complete flow:
+ * Live updates drawn as beams between the devices (wide screens only).
+ * Coordinates are in a 1000 x 540 box that stretches with the stage.
+ */
+const BEAMS: Record<string, string[]> = {
+  // New token travels from the phone to the reception board
+  token: ["M 420 330 C 360 330, 330 300, 285 300"],
+  // Call next goes out to the waiting-room display (passing behind the phone)
+  called: ["M 285 460 C 520 520, 760 470, 830 300"],
+};
+
+/**
+ * Full-width hero stage that plays the complete flow automatically:
  * join → token (with a walk-in slip) → wait anywhere → alert → called → serving → completed.
  * One clock drives the phone, push, reception board, waiting-room display and slip, so they always agree.
+ * It enters with a staggered rise, starts when scrolled into view, and keeps playing under the pointer.
  * The stage is decorative; the description, step timeline and pause control are not.
  */
 export function HeroScene() {
@@ -40,17 +60,30 @@ export function HeroScene() {
   const current = FLOW_STEPS[demo.step];
   const push = current.push ?? lastPush(demo.step);
   const called = current.counter.state === "Called";
+  const beams = BEAMS[current.id] ?? [];
+
+  // Hold the flow while the stage is off screen, so the first step plays when people see it
+  const stageRef = useRef<HTMLDivElement>(null);
+  const { setOffscreen } = demo;
+  useEffect(() => {
+    const stage = stageRef.current;
+    if (!stage || !("IntersectionObserver" in window)) return;
+    const observer = new IntersectionObserver(([entry]) => setOffscreen(!entry.isIntersecting), {
+      threshold: 0.25,
+    });
+    observer.observe(stage);
+    return () => observer.disconnect();
+  }, [setOffscreen]);
 
   return (
     <div>
       <p className="sr-only">{FLOW_DESCRIPTION}</p>
 
       <div
+        ref={stageRef}
         className="on-dark @container relative overflow-hidden rounded-[2rem] bg-aubergine sm:rounded-[2.5rem]"
-        onMouseEnter={() => demo.setPausedByHover(true)}
-        onMouseLeave={() => demo.setPausedByHover(false)}
       >
-        {/* Soft background shapes */}
+        {/* Soft background shapes and a slow light sweep */}
         <div
           aria-hidden="true"
           className="pointer-events-none absolute left-1/2 top-1/2 h-[34rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/5"
@@ -63,6 +96,9 @@ export function HeroScene() {
           aria-hidden="true"
           className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-white/5"
         />
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div className="animate-shine absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-transparent via-white/[0.07] to-transparent [animation-duration:9s]" />
+        </div>
 
         {/*
           Sizes to its own width: under 56rem the phone stands alone (cropped) with the push over it;
@@ -72,7 +108,52 @@ export function HeroScene() {
           aria-hidden="true"
           className="relative mx-auto h-[460px] max-w-6xl overflow-hidden px-4 pt-10 @4xl:h-[540px]"
         >
-          <ScenePhone step={current} />
+          {/* Beams: live updates travelling between devices */}
+          <svg
+            viewBox="0 0 1000 540"
+            preserveAspectRatio="none"
+            className="pointer-events-none absolute inset-0 hidden h-full w-full @4xl:block"
+          >
+            {beams.map((d, i) => (
+              <path
+                key={`${current.id}-${i}`}
+                d={d}
+                pathLength={1}
+                fill="none"
+                stroke="var(--color-lime)"
+                strokeWidth={3}
+                strokeLinecap="round"
+                strokeDasharray="1"
+                vectorEffect="non-scaling-stroke"
+                className="animate-beam"
+                style={{ animationDelay: `${300 + i * 250}ms` }}
+              />
+            ))}
+          </svg>
+
+          <div className="animate-rise relative [animation-delay:100ms]">
+            <ScenePhone step={current} />
+
+            {/* Completed: a short lime burst over the token */}
+            {current.id === "done" && (
+              <div className="pointer-events-none absolute left-1/2 top-[16.25rem] z-10">
+                {BURST.map((piece) => (
+                  <span
+                    key={piece.angle}
+                    className={`animate-burst absolute -ml-1.5 -mt-1.5 h-3 w-3 rounded-sm ${
+                      piece.lime ? "bg-lime" : "bg-aubergine"
+                    }`}
+                    style={
+                      {
+                        "--angle": piece.angle,
+                        animationDelay: piece.delay,
+                      } as React.CSSProperties
+                    }
+                  />
+                ))}
+              </div>
+            )}
+          </div>
 
           {/* Small screens: the push lands over the top of the phone, like a real banner */}
           <ScenePush
@@ -81,23 +162,24 @@ export function HeroScene() {
             className="absolute left-1/2 top-6 z-20 w-[min(17rem,calc(100%-2rem))] -translate-x-1/2 @4xl:hidden"
           />
 
-          {/* Wide screens */}
-          <ScenePush
-            push={push}
-            visible={current.push !== null}
-            className="absolute left-[4%] top-12 hidden w-72 -rotate-3 @4xl:block"
-          />
-          <SceneBoard
-            step={current}
-            className="absolute bottom-10 left-[3%] hidden w-64 @4xl:block"
-          />
+          {/* Wide screens: every piece rises in, then floats gently on its own rhythm */}
+          <div className="animate-rise absolute left-[4%] top-12 hidden w-72 [animation-delay:450ms] @4xl:block">
+            <div className="animate-float [animation-duration:7s]">
+              <ScenePush push={push} visible={current.push !== null} className="-rotate-3" />
+            </div>
+          </div>
 
-          <SceneDisplay
-            token={current.counter.token}
-            counter={FLOW_COUNTER}
-            called={called}
-            className="absolute right-[3%] top-12 hidden w-72 @4xl:block"
-          />
+          <div className="animate-rise absolute bottom-10 left-[3%] hidden w-64 [animation-delay:600ms] @4xl:block">
+            <div className="animate-float [animation-delay:-2s] [animation-duration:8s]">
+              <SceneBoard step={current} />
+            </div>
+          </div>
+
+          <div className="animate-rise absolute right-[3%] top-12 hidden w-72 [animation-delay:750ms] @4xl:block">
+            <div className="animate-float [animation-delay:-4s] [animation-duration:9s]">
+              <SceneDisplay token={current.counter.token} counter={FLOW_COUNTER} called={called} />
+            </div>
+          </div>
 
           {/* Walk-in slip prints at reception when a walk-in joins the same line */}
           <div className="absolute bottom-8 right-[9%] hidden w-[118px] @4xl:block">
@@ -186,7 +268,7 @@ function FlowTimeline({ demo }: { demo: Demo }) {
       </ol>
 
       <div className="mt-3 flex flex-col items-center gap-2 text-center sm:flex-row sm:justify-between sm:text-left">
-        <p className="min-h-12 text-sm text-plum sm:min-h-0">
+        <p key={current.id} className="animate-slide-in min-h-12 text-sm text-plum sm:min-h-0">
           <span className="font-bold">
             <span className="sm:hidden">
               {demo.step + 1}/{FLOW_STEPS.length} ·{" "}
