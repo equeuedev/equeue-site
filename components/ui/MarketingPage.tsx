@@ -1,3 +1,29 @@
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-export function MarketingPage({ title, intro, sections }: { title: string; intro: string; sections: { title: string; body: string }[] }) { return <Container className="py-16 sm:py-24"><h1 className="font-hero text-4xl uppercase tracking-wide text-plum">{title}</h1><p className="mt-4 max-w-2xl text-lg text-grey-purple">{intro}</p><div className="mt-10 grid gap-5 md:grid-cols-2">{sections.map((section) => <article className="rounded-2xl border border-soft-grey bg-white p-6" key={section.title}><h2 className="font-display text-xl font-bold">{section.title}</h2><p className="mt-3 text-grey-purple">{section.body}</p></article>)}</div><div className="mt-10"><Button href="/contact">Contact us</Button></div></Container>; }
+export function MarketingPage({
+  title,
+  intro,
+  sections,
+}: {
+  title: string;
+  intro: string;
+  sections: { title: string; body: string }[];
+}) {
+  return (
+    <Container className="py-16 sm:py-24">
+      <h1 className="font-hero text-4xl uppercase tracking-wide text-plum">{title}</h1>
+      <p className="mt-4 max-w-2xl text-lg text-grey-purple">{intro}</p>
+      <div className="mt-10 grid gap-5 md:grid-cols-2">
+        {sections.map((section) => (
+          <article className="rounded-2xl border border-soft-grey bg-white p-6" key={section.title}>
+            <h2 className="font-display text-xl font-bold">{section.title}</h2>
+            <p className="mt-3 text-grey-purple">{section.body}</p>
+          </article>
+        ))}
+      </div>
+      <div className="mt-10">
+        <Button href="/contact">Contact us</Button>
+      </div>
+    </Container>
+  );
+}

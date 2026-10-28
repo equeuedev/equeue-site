@@ -1,6 +1,10 @@
+import { HighlightedText } from "@/components/ui/Highlight";
+
 type Props = {
   eyebrow?: string;
   title: string;
+  /** Important words inside `title`, marked in lime as in the hero. */
+  highlight?: string;
   intro?: string;
   align?: "left" | "center";
   /** Set true on dark (aubergine / charcoal) backgrounds. */
@@ -10,6 +14,7 @@ type Props = {
 export function SectionHeading({
   eyebrow,
   title,
+  highlight,
   intro,
   align = "left",
   onDark = false,
@@ -26,16 +31,14 @@ export function SectionHeading({
         </p>
       )}
       <h2
-        className={`font-hero text-3xl uppercase tracking-wide sm:text-4xl ${
+        className={`font-hero text-2xl uppercase leading-[1.5] tracking-wide sm:text-3xl lg:text-4xl ${
           onDark ? "text-white" : "text-plum"
         }`}
       >
-        {title}
+        <HighlightedText text={title} highlight={highlight} />
       </h2>
       {intro && (
-        <p className={`mt-4 text-lg ${onDark ? "text-white/85" : "text-grey-purple"}`}>
-          {intro}
-        </p>
+        <p className={`mt-4 text-lg ${onDark ? "text-white/85" : "text-grey-purple"}`}>{intro}</p>
       )}
     </div>
   );

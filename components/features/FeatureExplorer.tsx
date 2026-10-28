@@ -2,4 +2,48 @@
 import { useState } from "react";
 import { FEATURES } from "@/lib/features";
 import { trackEvent } from "@/lib/analytics";
-export function FeatureExplorer() { const [selected, setSelected] = useState(FEATURES[0]); return <div><div role="tablist" aria-label="Features" className="flex flex-wrap gap-2">{FEATURES.map((feature) => <button key={feature.slug} role="tab" aria-selected={selected.slug === feature.slug} onClick={() => { setSelected(feature); trackEvent("feature_tab", { feature: feature.slug }); }} className={`min-h-11 rounded-full px-4 py-2 font-semibold ${selected.slug === feature.slug ? "bg-aubergine text-white" : "border border-aubergine text-aubergine"}`}>{feature.name}</button>)}</div><div className="mt-8 grid gap-8 rounded-3xl border border-soft-grey bg-white p-8 md:grid-cols-2"><div aria-hidden="true" className="flex min-h-48 items-center justify-center rounded-2xl bg-charcoal text-3xl font-bold text-lime">A-023</div><div><h2 className="font-display text-2xl font-bold">{selected.name}</h2><p className="mt-3 text-grey-purple">{selected.description}</p><ul className="mt-5 space-y-3">{selected.bullets.map((bullet) => <li key={bullet}>✓ {bullet}</li>)}</ul>{selected.slug === "counter-board" && <button className="mt-6 min-h-11 rounded-full bg-lime px-5 font-semibold text-plum">Call next</button>}</div></div></div>; }
+export function FeatureExplorer() {
+  const [selected, setSelected] = useState(FEATURES[0]);
+  return (
+    <div>
+      <div role="tablist" aria-label="Features" className="flex flex-wrap gap-2">
+        {FEATURES.map((feature) => (
+          <button
+            key={feature.slug}
+            role="tab"
+            aria-selected={selected.slug === feature.slug}
+            onClick={() => {
+              setSelected(feature);
+              trackEvent("feature_tab", { feature: feature.slug });
+            }}
+            className={`min-h-11 rounded-full px-4 py-2 font-semibold ${selected.slug === feature.slug ? "bg-aubergine text-white" : "border border-aubergine text-aubergine"}`}
+          >
+            {feature.name}
+          </button>
+        ))}
+      </div>
+      <div className="mt-8 grid gap-8 rounded-3xl border border-soft-grey bg-white p-8 md:grid-cols-2">
+        <div
+          aria-hidden="true"
+          className="flex min-h-48 items-center justify-center rounded-2xl bg-charcoal text-3xl font-bold text-lime"
+        >
+          A-023
+        </div>
+        <div>
+          <h2 className="font-display text-2xl font-bold">{selected.name}</h2>
+          <p className="mt-3 text-grey-purple">{selected.description}</p>
+          <ul className="mt-5 space-y-3">
+            {selected.bullets.map((bullet) => (
+              <li key={bullet}>✓ {bullet}</li>
+            ))}
+          </ul>
+          {selected.slug === "counter-board" && (
+            <button className="mt-6 min-h-11 rounded-full bg-lime px-5 font-semibold text-plum">
+              Call next
+            </button>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}

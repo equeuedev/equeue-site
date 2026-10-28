@@ -49,6 +49,13 @@ const PATHS = {
       <line x1="6" y1="20" x2="6" y2="16" />
     </>
   ),
+  play: <polygon points="6 4 20 12 6 20 6 4" />,
+  pause: (
+    <>
+      <rect x="6" y="4" width="4" height="16" rx="1" />
+      <rect x="14" y="4" width="4" height="16" rx="1" />
+    </>
+  ),
   check: <polyline points="20 6 9 17 4 12" />,
   list: (
     <>
@@ -71,13 +78,7 @@ const PATHS = {
 
 export type IconName = keyof typeof PATHS;
 
-export function Icon({
-  name,
-  className = "h-6 w-6",
-}: {
-  name: IconName;
-  className?: string;
-}) {
+export function Icon({ name, className = "h-6 w-6" }: { name: IconName; className?: string }) {
   return (
     <svg
       viewBox="0 0 24 24"

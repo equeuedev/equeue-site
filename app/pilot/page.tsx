@@ -1,4 +1,29 @@
 import type { Metadata } from "next";
 import { MarketingPage } from "@/components/ui/MarketingPage";
-export const metadata: Metadata = { title: "Pilot Program", description: "Join a small group of pilot clinics in Lahore. On-site installation, staff training and a goal of going live in 7 days." };
-export default function Page() { return <MarketingPage title="Be one of our first clinics." intro="We're working with a small group of pilot partners in Lahore to shape E-Queue before it opens wider." sections={[{ title: "What you get", body: "On-site installation, staff training, a starter template, and a goal of going from contract to live in 7 days." }, { title: "What we ask", body: "A POS thermal receipt printer and a TV with a browser. Honest feedback during the first weeks." }, { title: "Pilot goals (not guarantees)", body: "Our goals are 80% less physical waiting and a 30% rise in patient satisfaction." }]} />; }
+export const metadata: Metadata = {
+  title: "Pilot Program",
+  description:
+    "Join a small group of pilot clinics in Lahore. On-site installation, staff training and a goal of going live in 7 days.",
+};
+export default function Page() {
+  return (
+    <MarketingPage
+      title="Be one of our first clinics."
+      intro="We're working with a small group of pilot partners in Lahore to shape E-Queue before it opens wider."
+      sections={[
+        {
+          title: "What you get",
+          body: "On-site installation, staff training, a starter template, and a goal of going from contract to live in 7 days.",
+        },
+        {
+          title: "What we ask",
+          body: "A POS thermal receipt printer and a TV with a browser. Honest feedback during the first weeks.",
+        },
+        {
+          title: "Pilot goals (not guarantees)",
+          body: "Our goals are 80% less physical waiting and a 30% rise in patient satisfaction.",
+        },
+      ]}
+    />
+  );
+}

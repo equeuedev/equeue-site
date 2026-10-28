@@ -63,7 +63,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Skip to content
         </a>
         <Header />
-        {process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN ? <Script defer data-domain={process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN} src="https://plausible.io/js/script.js" strategy="afterInteractive" /> : null}
+        {process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN ? (
+          <Script
+            defer
+            data-domain={process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN}
+            src="https://plausible.io/js/script.js"
+            strategy="afterInteractive"
+          />
+        ) : null}
         <main id="main" className="flex-1">
           {children}
         </main>

@@ -15,5 +15,11 @@ export function StickyCta() {
     return () => observer.disconnect();
   }, []);
   if (pathname === "/contact" || footerVisible) return null;
-  return <div className="fixed inset-x-0 bottom-0 z-40 border-t border-soft-grey bg-white/95 p-3 shadow-lg sm:hidden"><Button href="/contact" className="w-full">Contact us</Button></div>;
+  return (
+    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-soft-grey bg-white/95 p-3 shadow-lg sm:hidden">
+      <Button href="/contact" className="w-full">
+        Contact us
+      </Button>
+    </div>
+  );
 }

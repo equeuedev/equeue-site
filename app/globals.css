@@ -25,6 +25,34 @@
   --font-hero: var(--font-boldonse);
 }
 
+/* Motion tokens for the hero demo. Reduced-motion users get near-zero durations (see bottom). */
+@theme {
+  --animate-tick: tick 400ms ease-out;
+  --animate-slide-in: slide-in 450ms ease-out;
+
+  @keyframes tick {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes slide-in {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -50,7 +78,9 @@ body {
   .js .reveal {
     opacity: 0;
     transform: translateY(12px);
-    transition: opacity 500ms ease, transform 500ms ease;
+    transition:
+      opacity 500ms ease,
+      transform 500ms ease;
   }
   .js .reveal.is-visible {
     opacity: 1;

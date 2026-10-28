@@ -8,12 +8,15 @@ export function useReveal<T extends HTMLElement>() {
     document.documentElement.classList.add("js");
     const element = ref.current;
     if (!element || !("IntersectionObserver" in window)) return;
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        element.classList.add("is-visible");
-        observer.disconnect();
-      }
-    }, { threshold: 0.12 });
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          element.classList.add("is-visible");
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.12 },
+    );
     observer.observe(element);
     return () => observer.disconnect();
   }, []);
