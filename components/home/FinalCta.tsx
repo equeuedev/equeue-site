@@ -32,7 +32,7 @@ export function FinalCta() {
           </div>
           <div className="relative hidden h-[22rem] overflow-hidden md:block">
             <div className="mt-6 rotate-3">
-              <IPhone scale={0.8}>
+              <IPhone scale={0.8} className="p-0">
                 <TokenScreen step={DEMO_STEPS[3]} />
               </IPhone>
             </div>
