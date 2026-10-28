@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Icon } from "@/components/ui/Icon";
 import { HOME_LINK, NAV_LINKS } from "@/lib/site";
 
 /** True when `href` is the current page or one of its children (e.g. /industries/clinics). */
@@ -15,15 +14,15 @@ export function isActivePath(pathname: string | null, href: string) {
 const LINKS = [HOME_LINK, ...NAV_LINKS];
 
 /**
- * Desktop links inside the floating navbar.
- * Active: lime pill with icon and label. Others: icon and label in white
- * (icon only from 1024px to 1279px, with the label kept for screen readers and as a tooltip).
+ * Desktop text links inside the floating navbar (no icons).
+ * Active: lime tint with lime text and a hairline ring (12:1 contrast on Dark Plum), clearly
+ * lighter than the solid lime Contact us button. Others: white text with a soft hover.
  */
 export function NavLinks() {
   const pathname = usePathname();
 
   return (
-    <nav aria-label="Main" className="hidden lg:block">
+    <nav aria-label="Main">
       <ul className="flex items-center gap-1">
         {LINKS.map((link) => {
           const active = isActivePath(pathname, link.href);
@@ -31,16 +30,14 @@ export function NavLinks() {
             <li key={link.href}>
               <Link
                 href={link.href}
-                title={link.label}
                 aria-current={active ? "page" : undefined}
-                className={`inline-flex min-h-12 items-center gap-2 rounded-full text-sm transition-all duration-300 ${
+                className={`inline-flex min-h-11 items-center whitespace-nowrap rounded-full px-4 text-sm transition-colors duration-200 ${
                   active
-                    ? "bg-lime px-5 font-bold text-plum"
-                    : "px-3.5 font-medium text-white/80 hover:bg-white/10 hover:text-white"
+                    ? "bg-lime/10 font-semibold text-lime ring-1 ring-inset ring-lime/35"
+                    : "font-medium text-white/85 hover:bg-white/10 hover:text-white"
                 }`}
               >
-                {link.icon && <Icon name={link.icon} className="h-5 w-5 shrink-0" />}
-                <span className={active ? "" : "sr-only xl:not-sr-only"}>{link.label}</span>
+                {link.label}
               </Link>
             </li>
           );
